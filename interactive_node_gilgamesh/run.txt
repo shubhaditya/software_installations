@@ -1,0 +1,7 @@
+Start an interactive node on gilgamesh (cluster in CMU):
+
+%%% Start interactive environment
+qsub-i -l walltime=20:00:00
+
+%%% End interactive environment
+exit

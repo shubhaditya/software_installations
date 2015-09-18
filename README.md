@@ -1,0 +1,1 @@
+Each folder has installation instructions on installing the software on Linux/OsX.
