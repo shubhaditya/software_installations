@@ -10,7 +10,8 @@ git add .
 #%%%Commit files
 git commit -n 'Message'
 
-#%%%Specify origin name (e.g. 'origin1) and GIT URL
+#%%%For a first time commit, specify origin URL (skip this step if origin already set)
+#%%%%Specify origin name (e.g. 'origin1) and GIT URL
 git remote add origin1 https://github.com/shubhaditya/software_installations.git
 
 #%%%Push to GIT repository
