@@ -1,19 +1,17 @@
 Linux:
 
 %%% Unpack .tar file
-tar -xvf gcc-5.2.0.tar 
+tar -xvf openmpi-1.10.0.tar 
 
-%%% Download latest versions prerequisites
-cd path/gcc-5.2.0
-./contrib/download_prerequisites
+#%%% Build a dummy folder in main directory to run ./configure etc. from inside it
+cd path/openmpi-1.10.0
+mkdir openmpi-build
+cd openmpi-build 
 
-%%% Build a dummy folder in main directory to run ./configure etc. from inside it
-mkdir gcc-build
-cd gcc-build 
+#%%% Run config (with --prefix flag for a local build and CC, FC to specify compilers, e.g. CC=/home-research/shubhadm/packages/gcc_local/bin/gcc. Probably also need to specify CCFLAGS/FCFLAGS if the 
+#%%% compiler gives an error, usually due to library linking e.g. FCFLAGS=-Wl,-rpath,/home-research/shubhadm/packages/gcc_local/lib64)
 
-%%% Run config (with --prefix flag for a local build and --enable-languages flag to specify which languages to install)
-../configure --prefix=/full_path_to_local_directory --enable-languages=c,c++,fortran
+../configure --prefix=/full_path_to_local_directory CC=/full_path_to_compiler FC=/full_path_to_compiler CCFLAGS=flag_cc FCFCLAGS=flag_fc
 
-%%% Make and install
-make
-make install
+#%%% Make and install
+make all install
