@@ -1,0 +1,17 @@
+Linux:
+
+#%%% Initialize folder to add to GIT repository
+cd path/folder
+git init
+
+#%%% Add files to commit
+git add .
+
+#%%%Commit files
+git commit -n 'Message'
+
+#%%%Specify origin name (e.g. 'origin1) and GIT URL
+git remote add origin1 https://github.com/shubhaditya/software_installations.git
+
+#%%%Push to GIT repository
+git push origin1 master

@@ -1,0 +1,19 @@
+Linux:
+
+%%% Unpack .tar file
+tar -xvf gcc-5.2.0.tar 
+
+%%% Download latest versions prerequisites
+cd path/gcc-5.2.0
+./contrib/download_prerequisites
+
+%%% Build a dummy folder in main directory to run ./configure etc. from inside it
+mkdir gcc-build
+cd gcc-build 
+
+%%% Run config (with --prefix flag for a local build and --enable-languages flag to specify which languages to install)
+../configure --prefix=/full_path_to_local_directory --enable-languages=c,c++,fortran
+
+%%% Make and install
+make
+make install
