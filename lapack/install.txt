@@ -1,0 +1,17 @@
+Linux:
+
+#%%% Unpack .tar file
+tar -xvf lapack-3.5.0.tar 
+
+#%%% Install BLAS if not already installed
+cd path/lapack-3.5.0
+make blaslib
+
+#%%% Make a copy of the example make.inc file
+cp make.inc.example make.inc
+
+#%%%Edit the make.inc file to change the paths to the Fortran, C compilers and the BLAS library
+
+#%%% Make and install
+make
+make install
