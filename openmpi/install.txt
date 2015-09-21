@@ -8,10 +8,10 @@ cd path/openmpi-1.10.0
 mkdir openmpi-build
 cd openmpi-build 
 
-#%%% Run config (with --prefix flag for a local build and CC, FC to specify compilers, e.g. CC=/home-research/shubhadm/packages/gcc_local/bin/gcc. Probably also need to specify CCFLAGS/FCFLAGS if the 
-#%%% compiler gives an error, usually due to library linking e.g. FCFLAGS=-Wl,-rpath,/home-research/shubhadm/packages/gcc_local/lib64)
+#%%% Run config, with --prefix flag for a local build and CC, CXX and FC to specify compilers, e.g. CC=/home-research/shubhadm/packages/gcc_local/bin/gcc. Probably also need to specify CCFLAGS/FCFLAGS if 
+#%%% the compiler gives an error, usually due to library linking e.g. FCFLAGS=-Wl,-rpath,/home-research/shubhadm/packages/gcc_local/lib64). For gcc version>4.6, will also require CFLAGS and CXXFLAGS with "-fgnu89-inline" to prevent redundant inline definitions of certain functions. You may require CPPFLAGS to include additional directories for including header files for e.g. CPPFLAGS="-I /home-research/shubhadm/packages/gcc_local/include/c++/5.2.0 -I /home-research/shubhadm/packages/gcc_local/include/c++/5.2.0/x86_64-unknown-linux-gnu" 
 
-../configure --prefix=/full_path_to_local_directory CC=/full_path_to_compiler FC=/full_path_to_compiler CCFLAGS=flag_cc FCFCLAGS=flag_fc
+../configure --prefix=/full_path_to_local_directory CC=/full_path_to_compiler CFLAGS=-fgnu89-inline CPPFLAGS="-I /full_path_of_include" CXX=/full_path_to_compiler CXXFLAGS=-fgnu89-inline FC=/full_path_to_compiler FCFCLAGS=flag_fc
 
 #%%% Make and install
 make all install
