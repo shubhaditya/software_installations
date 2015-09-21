@@ -1,0 +1,14 @@
+Linux:
+
+#%%% Unpack .tar file
+tar -xvf scalapack-2.0.2.tar 
+
+#%%% Make a copy of the example make.inc file
+cd path/lapack-3.5.0
+cp SLmake.inc.example SLmake.inc
+
+#%%% Edit the make.inc file to change the paths to the Fortran, C compilers, and LAPACK 
+#%%% and BLAS libraries
+
+#%%% Make
+make
