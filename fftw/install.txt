@@ -1,0 +1,16 @@
+Linux:
+
+#%%% Unpack .tar file
+tar -xvf fftw-3.3.4.tar 
+
+#%%% Run config, with --prefix flag for a local build and CC, MPICC, and F77 to specify compilers, e.g. CC=/home-research/shubhadm/packages/gcc_local/bin/gcc. Probably also need to specify CFLAGS/FCFLAGS if 
+#%%% the compiler gives an error, usually due to library linking e.g. FFLAGS=-Wl,-rpath,/home-research/shubhadm/packages/gcc_local/lib64. For gcc version>4.6, will also require CFLAGS with
+#%%% "-fgnu89-inline" to prevent redundant inline definitions of certain functions. You may require CPPFLAGS to include additional directories for including header files for e.g. CPPFLAGS="-I /home-
+#%%% research/shubhadm/packages/gcc_local/include/c++/5.2.0 -I /home-research/shubhadm/packages/gcc_local/include/c++/5.2.0/x86_64-unknown-linux-gnu". You can optionally also enable the MPI libraries to 
+#%%% be installed  
+
+./configure --prefix=/full_path_to_local_directory CC=/full_path_to_compiler CFLAGS=-fgnu89-inline CPPFLAGS="-I /full_path_of_include" MPICC=/full_path_to_mpicc F77=/full_path_to_compiler FFCLAGS=flag_f --enable-mpi
+
+#%%% Make and install
+make
+make install
