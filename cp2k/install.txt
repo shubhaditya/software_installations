@@ -1,0 +1,15 @@
+Linux:
+
+%%% Unpack .tar file
+tar -xvf cp2k-2.6.1.tar 
+
+#%%% Configure the appropriate *.sopt or *.popt file - CC and FC to specify compilers, e.g. CC=/home-research/shubhadm/packages/gcc_local/bin/gcc. Also, you will need to use mpifort for FC for the 
+#%%% parallel option. You will have to make sure there are copies of the BLAS and SCALAPACK libraries named libblas.a and libblacs.a and add their folder paths using -L/path in LIBS. You will have to add 
+#%%% the folder for fftw3 using -L/path in LIBS. If you don't have livxc or ACML, remove their symbolic links/variables. For sopt, you need LAPACK/BLAS and for popt, you need SCALAPACK/BLACS.
+
+cd path/cp2k-2.6.1/arch
+vim name_of_file.popt
+
+#%%% Make and install
+cd path/cp2k-2.6.1/makefiles
+make ARCH=name_of_file VERSION=popt
