@@ -1,0 +1,17 @@
+Linux:
+
+%%% Unpack .tar file
+tar -xvf elpa-2015.05.001.tar 
+
+#%%% Run config, with --prefix flag for a local build and CC, CXX and FC to specify compilers, e.g. CC=/home-research/shubhadm/packages/gcc_local/bin/gcc. Probably also need to specify CFLAGS/FCFLAGS if 
+#%%% the compiler gives an error, usually due to library linking e.g. FCFLAGS=-Wl,-rpath,/home-research/shubhadm/packages/gcc_local/lib64). For gcc version>4.6, will also require CFLAGS and CXXFLAGS with
+#%%% "-fgnu89-inline" to prevent redundant inline definitions of certain functions. You may require CPPFLAGS to include additional directories for including header files for e.g. CPPFLAGS="-I /home-
+#%%% research/shubhadm/packages/gcc_local/include/c++/5.2.0 -I /home-research/shubhadm/packages/gcc_local/include/c++/5.2.0/x86_64-unknown-linux-gnu".  Also, you will most probably need to use mpifort for FC. You will have to make sure there are copies of the BLAS and SCALAPACK libraries named libblas.a and libblacs.a and include their directories using -L/path in FCFLAGS
+
+cd path/elpa-2015.05.001
+../configure --prefix=/full_path_to_local_directory MPICC=/full_path_to_compiler CC=/full_path_to_compiler CFLAGS="O3 -fgnu89-inline CPPFLAGS="-I /full_path_of_include" CXX=/full_path_to_compiler CXXFLAGS="O3 -fgnu89-inline" MPIFC=/full_path_to_compiler FC=/full_path_to_mpifort_compiler FCFLAGS="-O3 flag_fc -fPIC" 
+
+#%%% Make and install
+make
+make check
+make install

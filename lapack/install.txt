@@ -10,7 +10,7 @@ make blaslib
 #%%% Make a copy of the example make.inc file
 cp make.inc.example make.inc
 
-#%%% Edit the make.inc file to change the paths to the Fortran, C compilers and the BLAS library
+#%%% Edit the make.inc file to change the paths to the Fortran, C compilers and the BLAS library (add -m64 -fPIC to all Fortran flags)
 
 #%%% Make and install
 make
