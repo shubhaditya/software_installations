@@ -1,0 +1,20 @@
+Linux:
+
+%%% Unpack .tar file
+tar -xvf libxc-2.1.2.tar 
+
+#%%% Build a dummy folder in main directory to run ./configure etc. from inside it
+cd path/libxc-2.1.2
+
+#%%% Run config, with --prefix flag for a local build and CC, CXX and F77 to specify compilers, e.g. CC=/home-research/shubhadm/packages/gcc_local/bin/gcc. Probably also need to specify CFLAGS/FFLAGS if 
+#%%% the compiler gives an error, usually due to library linking e.g. FCFLAGS=-Wl,-rpath,/home-research/shubhadm/packages/gcc_local/lib64). For gcc version>4.6, will also require CFLAGS and CXXFLAGS with
+#%%% "-fgnu89-inline" to prevent redundant inline definitions of certain functions. You may require CPPFLAGS to include additional directories for including header files for e.g. CPPFLAGS="-I /home-
+#%%% research/shubhadm/packages/gcc_local/include/c++/5.2.0 -I /home-research/shubhadm/packages/gcc_local/include/c++/5.2.0/x86_64-unknown-linux-gnu" 
+
+../configure --prefix=/full_path_to_local_directory CC=/full_path_to_compiler CFLAGS=-fgnu89-inline CPPFLAGS="-I /full_path_of_include" FC=/full_path_to_compiler FCFLAGS=flag_fc
+
+#%%% Make and install
+make
+make check
+make install
+make installcheck
